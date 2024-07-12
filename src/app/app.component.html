@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Development Cycle</title>
+</head>
+<body>
+  <form [formGroup]="form" (ngSubmit)="addItem()">
+    <div class="container">
+      <h1 class="text-center">Development Cycle</h1>
+      <div class="form-group">
+        <input type="text" class="form-control" formControlName="item" placeholder="Enter Here...">
+        <button class="btn btn-primary btn-block mb-2 mt-1" type="submit">+ Enter</button>
+      </div>
+      <div>
+        <div *ngFor="let task of tasks" class="todo-item">
+          <span>{{ task.name }}</span>
+          <div class="todo-actions">
+            <button class="btn btn-success btn-circle" (click)="completeTask(task)"><i class="bi bi-file-plus-fill"></i></button>
+            <button class="btn btn-danger btn-circle" (click)="deleteTask(task)"><i class="bi bi-trash"></i></button>
+          </div>
+        </div>
+      </div>
+      <h2 class="text-center completed-tasks">Completed</h2>
+      <div>
+        <div *ngFor="let task of completedTasks" class="todo-item completed">
+          <span>{{ task.name }}</span>
+          <div class="todo-actions">
+            <button class="btn btn-danger btn-circle" (click)="deleteTask(task)"><i class="bi bi-trash"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form> 
+</body>
+</html>
+<router-outlet></router-outlet>
